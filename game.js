@@ -37,8 +37,6 @@ function human(){
 //initialize score to 0
 let humanScore = 0 , computerScore = 0
 
-
-
 //create a play round loop
 //compare humanSelection and computerSelection
 //increment score by one
@@ -51,42 +49,45 @@ function gameLoop (){
     switch(computerSelection){
         case 'rock':
             if (humanSelection=='rock'){
-                console.log("You tied!",computerSelection," and ",humanSelection," are the same!")
                 scoreStatus='tied'
             }else if (humanSelection=='paper'){
-                console.log("You win!!",humanSelection," beats ",computerSelection,"!")
-                scoreStatus='win'
+                scoreStatus='human'
             }else if (humanSelection=='scissors'){
-                console.log("You lose...",computerSelection," beats ",humanSelection,".")
-                scoreStatus='lose'
+                scoreStatus='com'
             }
         break;
         case 'paper':
             if (humanSelection=='rock'){
-                console.log("You win!!",humanSelection," beats ",computerSelection,"!")
-                scoreStatus='win'  
+                scoreStatus='human'  
             }else if (humanSelection=='paper'){
-                console.log("You tied!",computerSelection," and ",humanSelection," are the same!")
                 scoreStatus='tied'
             }else if (humanSelection=='scissors'){
-                console.log("You lose...",computerSelection," beats ",humanSelection,".")
-                scoreStatus='lose'
+                scoreStatus='com'
             }
             break;
         case 'scissors':
             if (humanSelection=='rock'){
-                console.log("You win!!",humanSelection," beats ",computerSelection,"!")
-                scoreStatus='win'
+                scoreStatus='human'
             }else if (humanSelection=='paper'){
-                console.log("You lose...",computerSelection," beats ",humanSelection,".")
-                scoreStatus='lose'
+                scoreStatus='com'
             }else if (humanSelection=='scissors'){
-                console.log("You tied!",computerSelection," and ",humanSelection," are the same!")
                 scoreStatus='tied'
             }
         break;
     }
     return scoreStatus;
 }
+    let winner = roundLoop()
+    if (winner=='tied'){
+        console.log("You tied!",computerSelection," and ",humanSelection," are the same!")
+    } else if (winner=='human'){
+        humanScore= ++humanScore
+        console.log("You win!!",humanSelection," beats ",computerSelection,"!")
+    } else if (winner=='com') {
+        computerScore= ++computerScore
+        console.log("You lose...",computerSelection," beats ",humanSelection,".")
 }
+    console.log("Round #",rounds)
+    console.log("Computer Score: ",computerScore," Your Score: ",humanScore,".")
+}   
 gameLoop()
