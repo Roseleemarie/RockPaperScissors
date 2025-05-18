@@ -8,13 +8,13 @@ function computer(){
     //if var =0 "rock" var =1 "paper" var=2 "scissors" 
     //store string value computerSelection
     if (getComputerChoice==0){
-        computerSelection="rock"
+        computerChoice="rock"
     } else if (getComputerChoice==1){
-        computerSelection="paper"
+        computerChoice="paper"
     } else if (getComputerChoice==2){
-        computerSelection="scissors"
+        computerChoice="scissors"
     }
-    return computerSelection;
+    return computerChoice;
 }
 //check var in console.log
 //console.log(computer())
@@ -27,7 +27,7 @@ function human(){
     //store value in humanSelection
     humanSelection = getHumanChoice.toLowerCase();
     if (humanSelection == 'rock' || humanSelection == 'paper' || humanSelection == 'scissors'){
-        return humanSelection;
+        return humanChoice;
     }
     console.log("What is that?")
 }
@@ -38,13 +38,16 @@ function human(){
 let humanScore = 0 , computerScore = 0
 
 
+
 //create a play round loop
 //compare humanSelection and computerSelection
 //increment score by one
-//if score = 5 for either, then the game ends
-function roundLoop(humanScore,computerScore){
-    computerSelection = computer()
-    humanSelection = human()
+//when rounds = 5 the game ends
+let rounds = 0
+function gameLoop (){
+    let computerSelection = computer()
+    let humanSelection = human()
+    function roundLoop(humanSelection,computerSelection){
     switch(computerSelection){
         case 'rock':
             if (humanSelection=='rock'){
@@ -68,6 +71,7 @@ function roundLoop(humanScore,computerScore){
             }else if (humanSelection=='scissors'){
                 console.log("You lose...",computerSelection," beats ",humanSelection,".")
                 scoreStatus='lose'
+            }
             break;
         case 'scissors':
             if (humanSelection=='rock'){
@@ -84,10 +88,5 @@ function roundLoop(humanScore,computerScore){
     }
     return scoreStatus;
 }
-function gameLoop (){
-    switch(){
-
-    }
 }
-//    console.log("Current score Com:",computerScore," You:",humanScore)
-
+gameLoop()
