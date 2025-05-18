@@ -1,5 +1,5 @@
 //Properly linked up with weblink.html
-console.log("hello")
+//console.log("hello")
 //Computer Choice Function
 function computer(){
     //create var getComputerChoice
@@ -17,7 +17,7 @@ function computer(){
     return computerSelection;
 }
 //check var in console.log
-console.log(computer())
+//console.log(computer())
 //Human Choice Function
 function human(){
     //create var getHumanChoice
@@ -32,14 +32,50 @@ function human(){
     console.log("What is that?")
 }
 //check var in console.log
-console.log(human())
-
-
+//console.log(human())
 //create var humanScore and computerScore
 //initialize score to 0
+let humanScore, computerScore = 0
 
 
 //create a play round loop
 //compare humanSelection and computerSelection
 //increment score by one
 //if score = 5 for either, then the game ends
+function gameLoop(){
+    computerSelection = computer()
+    humanSelection = human()
+    switch(computerSelection){
+        case 'rock':
+            if (humanSelection=='rock'){
+                console.log (computerSelection,humanSelection)
+            }else if (humanSelection=='paper'){
+                console.log (computerSelection,humanSelection)
+            }else if (humanSelection=='scissors'){
+                console.log (computerSelection,humanSelection)
+            }
+        break;
+        case 'paper':
+            if (humanSelection=='rock'){
+                console.log (computerSelection,humanSelection)
+            }else if (humanSelection=='paper'){
+                console.log (computerSelection,humanSelection)
+            }else if (humanSelection=='scissors'){
+                console.log (computerSelection,humanSelection)
+            }
+        break;
+        case 'scissors':
+            if (humanSelection=='rock'){
+                console.log (computerSelection,humanSelection)
+            }else if (humanSelection=='paper'){
+                console.log (computerSelection,humanSelection)
+            }else if (humanSelection=='scissors'){
+                console.log (computerSelection,humanSelection)
+            }
+        break;
+    }
+
+}
+gameLoop()
+
+
