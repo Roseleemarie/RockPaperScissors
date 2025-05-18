@@ -16,8 +16,6 @@ function computer(){
     }
     return computerChoice;
 }
-//check var in console.log
-//console.log(computer())
 //Human Choice Function
 function human(){
     //create var getHumanChoice
@@ -25,14 +23,12 @@ function human(){
     getHumanChoice = prompt("Rock, Paper, Scissors!");
     //change string to lowercase
     //store value in humanSelection
-    humanSelection = getHumanChoice.toLowerCase();
-    if (humanSelection == 'rock' || humanSelection == 'paper' || humanSelection == 'scissors'){
+    humanChoice = getHumanChoice.toLowerCase();
+    if (humanChoice == 'rock' || humanChoice == 'paper' || humanChoice == 'scissors'){
         return humanChoice;
     }
     console.log("What is that?")
 }
-//check var in console.log
-//console.log(human())
 //create var humanScore and computerScore
 //initialize score to 0
 let humanScore = 0 , computerScore = 0
@@ -40,6 +36,7 @@ let humanScore = 0 , computerScore = 0
 //create a play round loop
 //compare humanSelection and computerSelection
 //increment score by one
+//create rounds var
 //when rounds = 5 the game ends
 let rounds = 0
 function gameLoop (){
@@ -64,7 +61,7 @@ function gameLoop (){
             }else if (humanSelection=='scissors'){
                 scoreStatus='com'
             }
-            break;
+        break;
         case 'scissors':
             if (humanSelection=='rock'){
                 scoreStatus='human'
@@ -77,7 +74,7 @@ function gameLoop (){
     }
     return scoreStatus;
 }
-    let winner = roundLoop()
+    let winner = roundLoop(humanSelection,computerSelection);
     if (winner=='tied'){
         console.log("You tied!",computerSelection," and ",humanSelection," are the same!")
     } else if (winner=='human'){
@@ -87,7 +84,12 @@ function gameLoop (){
         computerScore= ++computerScore
         console.log("You lose...",computerSelection," beats ",humanSelection,".")
 }
-    console.log("Round #",rounds)
-    console.log("Computer Score: ",computerScore," Your Score: ",humanScore,".")
+    totalRounds= ++rounds;
+    console.log("Round #",totalRounds);
+    console.log("Computer Score: ",computerScore," Your Score: ",humanScore,".");
+    return totalRounds;
 }   
-gameLoop()
+while (rounds<5) {
+    rounds = gameLoop()
+}
+
