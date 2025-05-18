@@ -18,23 +18,23 @@ function computer(){
 }
 //check var in console.log
 console.log(computer())
-
 //Human Choice Function
-//create var getHumanChoice
-//prompt a choice between 'rock ', ' paper ', ' scissors'
-//change string to lowercase
-//store value in humanSelection
-//check var in console.log
-
 function human(){
+    //create var getHumanChoice
+    //prompt a choice between 'rock ', ' paper ', ' scissors'
     getHumanChoice = prompt("Rock, Paper, Scissors!");
+    //change string to lowercase
+    //store value in humanSelection
     humanSelection = getHumanChoice.toLowerCase();
     if (humanSelection == 'rock' || humanSelection == 'paper' || humanSelection == 'scissors'){
         return humanSelection;
     }
     console.log("What is that?")
 }
+//check var in console.log
 console.log(human())
+
+
 //create var humanScore and computerScore
 //initialize score to 0
 
