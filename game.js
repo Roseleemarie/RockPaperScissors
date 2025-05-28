@@ -1,12 +1,22 @@
 //Properly linked up with weblink.html
 //console.log("hello")
+let container = document.querySelector("div");
+let rockBtn = document.createElement("button");
+rockBtn.textContent = 'Pick Rock'
+container.appendChild(rockBtn);
+let sciBtn = document.createElement("button");
+sciBtn.textContent = 'Pick Scissors'
+container.appendChild(sciBtn);
+let paperBtn = document.createElement("button");
+paperBtn.textContent = "Pick Paper"
+container.appendChild(paperBtn);
+
 //Computer Choice Function
 function computer(){
     //create var getComputerChoice
     //generate a random number
     getComputerChoice = Math.floor(Math.random()*3);
     //if var =0 "rock" var =1 "paper" var=2 "scissors" 
-    //store string value computerSelection
     if (getComputerChoice==0){
         computerChoice="rock"
     } else if (getComputerChoice==1){
@@ -89,7 +99,7 @@ function gameLoop (){
     console.log("Computer Score: ",computerScore," Your Score: ",humanScore,".");
     return totalRounds;
 }   
-while (rounds<5) {
+/*while (rounds<5) {
     rounds = gameLoop()
-}
+}*/
 
