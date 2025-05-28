@@ -20,10 +20,7 @@ container.appendChild(result);
 
 //Computer Choice Function
 function computer(){
-    //create var getComputerChoice
-    //generate a random number
     getComputerChoice = Math.floor(Math.random()*3);
-    //if var =0 "rock" var =1 "paper" var=2 "scissors" 
     if (getComputerChoice==0){
         computerChoice="rock"
     } else if (getComputerChoice==1){
@@ -34,15 +31,8 @@ function computer(){
     return computerChoice;
 }
 
-//create var humanScore and computerScore
-//initialize score to 0
 let humanScore = 0 , computerScore = 0
 
-//create a play round loop
-//compare humanSelection and computerSelection
-//increment score by one
-//create rounds var
-//when rounds = 5 the game ends
 let rounds = 0
 function gameLoop (humanSelection){
     let computerSelection = computer()
@@ -80,26 +70,21 @@ function gameLoop (humanSelection){
 };
     let winner = roundLoop(humanSelection,computerSelection);
     if (winner=='tied'){
-        result.textContent = ` 
-        You tied! ${computerSelection} and ${humanSelection} are the same!`
+        result.textContent = `You tied! ${computerSelection} and ${humanSelection} are the same!`
     } else if (winner=='human'){
         humanScore= ++humanScore
-        result.textContent = ` 
-        You win!! ${humanSelection} beats ${computerSelection}!`
+        result.textContent = `You win!! ${humanSelection} beats ${computerSelection}!`
     } else if (winner=='com') {
         computerScore= ++computerScore
-        result.textContent = ` 
-        You lose... ${computerSelection} beats ${humanSelection}.`
+        result.textContent = `You lose... ${computerSelection} beats ${humanSelection}.`
 };
     totalRounds= ++rounds;
-    result.textContent += ` 
-    Round #${totalRounds}`;
-    result.textContent += ` 
-    Computer Score: ${computerScore} 
-    Your Score: ${humanScore}.`;
+    result.textContent += `Round #${totalRounds}`;
+    result.textContent += `Computer Score: ${computerScore} Your Score: ${humanScore}.`;
+        if (computerScore == 5){
+    result.textContent += `COMPUTER WINS!`
+    } else if (humanScore == 5){
+    result.textContent += `PLAYER WINS!`
+    };
     return totalRounds;
 };
-/*while (rounds<5) {
-    rounds = gameLoop()
-}*/
-
