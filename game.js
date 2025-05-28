@@ -1,15 +1,22 @@
-//Properly linked up with weblink.html
-//console.log("hello")
 let container = document.querySelector("div");
+
 let rockBtn = document.createElement("button");
-rockBtn.textContent = 'Pick Rock'
+rockBtn.textContent = 'Pick Rock';
 container.appendChild(rockBtn);
+rockBtn.addEventListener("click",() => gameLoop('rock'));
+
 let sciBtn = document.createElement("button");
-sciBtn.textContent = 'Pick Scissors'
+sciBtn.textContent = 'Pick Scissors';
 container.appendChild(sciBtn);
+sciBtn.addEventListener("click",() => gameLoop('scissors'));
+
 let paperBtn = document.createElement("button");
 paperBtn.textContent = "Pick Paper"
 container.appendChild(paperBtn);
+paperBtn.addEventListener("click",() => gameLoop('paper'));
+
+let result = document.createElement("p");
+container.appendChild(result);
 
 //Computer Choice Function
 function computer(){
@@ -26,19 +33,7 @@ function computer(){
     }
     return computerChoice;
 }
-//Human Choice Function
-function human(){
-    //create var getHumanChoice
-    //prompt a choice between 'rock ', ' paper ', ' scissors'
-    getHumanChoice = prompt("Rock, Paper, Scissors!");
-    //change string to lowercase
-    //store value in humanSelection
-    humanChoice = getHumanChoice.toLowerCase();
-    if (humanChoice == 'rock' || humanChoice == 'paper' || humanChoice == 'scissors'){
-        return humanChoice;
-    }
-    console.log("What is that?")
-}
+
 //create var humanScore and computerScore
 //initialize score to 0
 let humanScore = 0 , computerScore = 0
@@ -49,9 +44,8 @@ let humanScore = 0 , computerScore = 0
 //create rounds var
 //when rounds = 5 the game ends
 let rounds = 0
-function gameLoop (){
+function gameLoop (humanSelection){
     let computerSelection = computer()
-    let humanSelection = human()
     function roundLoop(humanSelection,computerSelection){
     switch(computerSelection){
         case 'rock':
@@ -83,22 +77,28 @@ function gameLoop (){
         break;
     }
     return scoreStatus;
-}
+};
     let winner = roundLoop(humanSelection,computerSelection);
     if (winner=='tied'){
-        console.log("You tied!",computerSelection," and ",humanSelection," are the same!")
+        result.textContent = ` 
+        You tied! ${computerSelection} and ${humanSelection} are the same!`
     } else if (winner=='human'){
         humanScore= ++humanScore
-        console.log("You win!!",humanSelection," beats ",computerSelection,"!")
+        result.textContent = ` 
+        You win!! ${humanSelection} beats ${computerSelection}!`
     } else if (winner=='com') {
         computerScore= ++computerScore
-        console.log("You lose...",computerSelection," beats ",humanSelection,".")
-}
+        result.textContent = ` 
+        You lose... ${computerSelection} beats ${humanSelection}.`
+};
     totalRounds= ++rounds;
-    console.log("Round #",totalRounds);
-    console.log("Computer Score: ",computerScore," Your Score: ",humanScore,".");
+    result.textContent += ` 
+    Round #${totalRounds}`;
+    result.textContent += ` 
+    Computer Score: ${computerScore} 
+    Your Score: ${humanScore}.`;
     return totalRounds;
-}   
+};
 /*while (rounds<5) {
     rounds = gameLoop()
 }*/
